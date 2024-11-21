@@ -1,8 +1,11 @@
-class EmptyLineLinter:
+from baseLinter import BaseLinter
+
+
+class EmptyLineLinter(BaseLinter):
     def __init__(self, code):
+        super().__init__()
         self.code = code
         self.lines = self.code.split('\n')
-        self.errors = []
         self.previous_structure = None  # 'class', 'function', 'method', None
         self.previous_lineno = 0
         self.in_class = False
@@ -85,14 +88,6 @@ class EmptyLineLinter:
     def run(self):
         self.check_empty_lines()
 
-    def report(self):
-        if not self.errors:
-            print("Замечаний не найдено!")
-        else:
-            print("Замечания по коду:")
-            for lineno, message in self.errors:
-                print(f"Строка {lineno}: {message}")
-
 
 # Пример использования
 if __name__ == "__main__":
@@ -104,4 +99,4 @@ if __name__ == "__main__":
 """
     linter = EmptyLineLinter(code)
     linter.run()
-    linter.report()
+    linter.print_report()

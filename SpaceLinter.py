@@ -1,8 +1,11 @@
-class SpaceLinter:
+from baseLinter import BaseLinter
+
+
+class SpaceLinter(BaseLinter):
     def __init__(self, code):
+        super().__init__()
         self.code = code
         self.lines = code.splitlines()
-        self.errors = []
 
     def check_trailing_spaces(self):
         """
@@ -87,19 +90,11 @@ class SpaceLinter:
         self.check_extra_spaces_within_line()
         self.check_block_indentation()
 
-    def report(self):
-        if not self.errors:
-            print("Замечаний не найдено!")
-        else:
-            print("Замечания по коду:")
-            for lineno, message in self.errors:
-                print(f"Строка {lineno}: {message}")
-
 
 # Пример использования
 if __name__ == "__main__":
-    code = """a = 1
+    code = """a =  1
 """
     linter = SpaceLinter(code)
     linter.run()
-    linter.report()
+    linter.print_report()
