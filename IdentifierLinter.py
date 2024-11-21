@@ -53,9 +53,6 @@ class IdentifierLinter(BaseLinter):
         self.check_identifiers()
 
 
-
-
-
 # Пример использования
 if __name__ == "__main__":
     code = """

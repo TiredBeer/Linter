@@ -2,6 +2,7 @@ from SpaceLinter import SpaceLinter
 from EmptyLineLinter import EmptyLineLinter
 from IdentifierLinter import IdentifierLinter
 
+
 class Linter:
     def __init__(self, code):
         self.code = code
@@ -13,7 +14,6 @@ class Linter:
     def run(self):
         for sub_linter in self.sub_linters:
             sub_linter.run()
-
 
     def get_corrections(self):
         self.run()
@@ -29,10 +29,8 @@ class Linter:
                 print(typle[1])
 
 
-
-
 if __name__ == '__main__':
-    #исправь как чувствуешь, и поймешь как он исправляет
+    # исправь как чувствуешь, и поймешь как он исправляет
     code = '''
 111a = 2
 for i in range(10):
@@ -47,5 +45,3 @@ class A:
     '''
     linter = Linter(code)
     linter.get_corrections()
-
-
