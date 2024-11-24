@@ -1,3 +1,4 @@
+import argparse
 from SpaceLinter import SpaceLinter
 from EmptyLineLinter import EmptyLineLinter
 from IdentifierLinter import IdentifierLinter
@@ -30,7 +31,21 @@ class Linter:
 
 
 if __name__ == '__main__':
-    with open('file', 'r') as f:
-        code = [i for i in f.readlines()]
-        linter = Linter(code)
-        linter.get_corrections()
+    parser = argparse.ArgumentParser(description="Linter для анализа кода.")
+    parser.add_argument(
+        'file',
+        type=str,
+        help="Путь к файлу, который нужно проанализировать."
+    )
+    args = parser.parse_args()
+    file_path = args.file
+    try:
+        with open(file_path, 'r') as f:
+            code = [i for i in f.readlines()]
+            linter = Linter(code)
+            linter.get_corrections()
+    except FileNotFoundError:
+        print(f"Ошибка: Файл '{file_path}' не найден.")
+    except Exception as e:
+        print(f"Произошла ошибка: {e}")
+

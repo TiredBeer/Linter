@@ -1,10 +1,5 @@
-111a = 2
-for i in range(10):
-   a= 2
-
-class A:
-    def b():
-    def c():
-
-
-    def e()
+class MyClass:
+    def method_one(self):
+        pass
+def function_two():
+    pass

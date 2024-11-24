@@ -22,11 +22,11 @@ class EmptyLineLinter(BaseLinter):
                 if self.first_structure:
                     if lineno > 1:
                         # Если перед первым классом есть код, проверяем количество пустых строк
-                        self.check_blank_lines(lineno, 2, 'класс')
+                        self.check_blank_lines(lineno, 2, 'классом')
                     self.first_structure = False
                 else:
                     # Проверяем количество пустых строк перед классом
-                    self.check_blank_lines(lineno, 2, 'класс')
+                    self.check_blank_lines(lineno, 2, 'классом')
 
                 self.previous_structure = 'class'
                 self.previous_lineno = lineno
@@ -36,17 +36,17 @@ class EmptyLineLinter(BaseLinter):
             elif stripped_line.startswith('def '):
                 if self.in_class and current_indent > self.class_indent:
                     if self.previous_structure == 'method':
-                        self.check_blank_lines(lineno, 1, 'метод класса')
+                        self.check_blank_lines(lineno, 1, 'методом класса')
                     self.previous_structure = 'method'
                     self.previous_lineno = lineno
                 else:
                     # Это функция верхнего уровня
                     if self.first_structure:
                         if lineno > 1:
-                            self.check_blank_lines(lineno, 2, 'функция')
+                            self.check_blank_lines(lineno, 2, 'функцией')
                         self.first_structure = False
                     else:
-                        self.check_blank_lines(lineno, 2, 'функция')
+                        self.check_blank_lines(lineno, 2, 'функцией')
                     self.previous_structure = 'function'
                     self.previous_lineno = lineno
                     self.in_class = False
@@ -86,16 +86,3 @@ class EmptyLineLinter(BaseLinter):
 
     def run(self):
         self.check_empty_lines()
-
-
-# Пример использования
-if __name__ == "__main__":
-    code = """class A:
-    def method_a(self):
-        pass
-    def method_b(self):
-        pass
-"""
-    linter = EmptyLineLinter(code)
-    linter.run()
-    linter.print_report()

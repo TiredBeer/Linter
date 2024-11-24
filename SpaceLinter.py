@@ -88,12 +88,3 @@ class SpaceLinter(BaseLinter):
         self.check_trailing_spaces()
         self.check_extra_spaces_within_line()
         self.check_block_indentation()
-
-
-# Пример использования
-if __name__ == "__main__":
-    code = """a =  1
-"""
-    linter = SpaceLinter(code)
-    linter.run()
-    linter.print_report()

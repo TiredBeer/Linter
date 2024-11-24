@@ -50,27 +50,3 @@ class IdentifierLinter(BaseLinter):
 
     def run(self):
         self.check_identifiers()
-
-
-# Пример использования
-if __name__ == "__main__":
-    code = """
-class InvalidClass:
-    1a22 =2
-    pass
-
-class ValidClass:
-    pass
-
-def invalid_function():
-    pass
-
-def valid_function():
-    pass
-
-nvalid_variable = 10
-_valid_variable = 20
-"""
-    linter = IdentifierLinter(code)
-    linter.run()
-    linter.print_report()
