@@ -3,10 +3,9 @@ from baseLinter import BaseLinter
 
 
 class IdentifierLinter(BaseLinter):
-    def __init__(self, code):
+    def __init__(self, code_lines):
         super().__init__()
-        self.code = code
-        self.lines = self.code.split('\n')
+        self.lines = code_lines
         self.invalid_start_chars = r'[^a-zA-Z_]'  # Разрешены только буквы и подчёркивание в начале имени
 
     def check_identifiers(self):

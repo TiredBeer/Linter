@@ -2,10 +2,9 @@ from baseLinter import BaseLinter
 
 
 class SpaceLinter(BaseLinter):
-    def __init__(self, code):
+    def __init__(self, code_lines):
         super().__init__()
-        self.code = code
-        self.lines = code.splitlines()
+        self.lines = code_lines
 
     def check_trailing_spaces(self):
         """

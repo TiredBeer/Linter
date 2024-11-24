@@ -2,10 +2,9 @@ from baseLinter import BaseLinter
 
 
 class EmptyLineLinter(BaseLinter):
-    def __init__(self, code):
+    def __init__(self, code_lines):
         super().__init__()
-        self.code = code
-        self.lines = self.code.split('\n')
+        self.lines = code_lines
         self.previous_structure = None  # 'class', 'function', 'method', None
         self.previous_lineno = 0
         self.in_class = False

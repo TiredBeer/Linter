@@ -30,18 +30,7 @@ class Linter:
 
 
 if __name__ == '__main__':
-    # исправь как чувствуешь, и поймешь как он исправляет
-    code = '''
-111a = 2
-for i in range(10):
-   a= 2
-   
-class A:
-    def b():
-    def c():
-    
-    
-    def e()
-    '''
-    linter = Linter(code)
-    linter.get_corrections()
+    with open('file', 'r') as f:
+        code = [i for i in f.readlines()]
+        linter = Linter(code)
+        linter.get_corrections()
